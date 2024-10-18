@@ -1,7 +1,6 @@
 from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
+from .Products import Product  # Importing Product model from models.py
 
 def home(request):
-    return HttpResponse("<h1> Welcome to E-commerence site </h1>")
+    products = Product.objects.all()  # Fetching all Product instances and storing in 'products'
+    return render(request, 'index.html', {'products': products})  # Passing 'products' to the template
